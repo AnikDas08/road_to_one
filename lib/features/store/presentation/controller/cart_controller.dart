@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../models/cart_item.dart';
+import '../../data/models/cart_item.dart';
 
 class CartController extends GetxController {
   RxList<CartItem> cartItems = <CartItem>[].obs;

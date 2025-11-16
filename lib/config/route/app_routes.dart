@@ -6,19 +6,24 @@ import 'package:road_project_flutter/features/auth/phone_signup/presentation/scr
 import 'package:road_project_flutter/features/auth/signin/presentation/screen/sign_in_screen.dart';
 import 'package:road_project_flutter/features/auth/signup/presentation/screen/signup_screens.dart';
 import 'package:road_project_flutter/features/auth/signup/presentation/screen/verify_user_screen.dart';
+import 'package:road_project_flutter/features/business/presentation/screen/personal_detail_screen.dart';
 import 'package:road_project_flutter/features/gym_screen/presentaion/screens/calender_screen.dart';
 import 'package:road_project_flutter/features/gym_screen/presentaion/screens/my_plan_screen.dart';
 import 'package:road_project_flutter/features/gym_screen/presentaion/screens/myprogress_screen.dart';
 import 'package:road_project_flutter/features/gym_screen/presentaion/screens/plan_details_screen.dart';
-import 'package:road_project_flutter/features/home/presentation/screen/cart_screen.dart';
+import 'package:road_project_flutter/features/store/presentation/screen/cart_screen.dart';
 import 'package:road_project_flutter/features/home/presentation/screen/create_post_screen.dart';
 import 'package:road_project_flutter/features/home/presentation/screen/home_nav_screen.dart';
+import 'package:road_project_flutter/features/mealscreen/presentation/screen/details_all_food.dart';
+import 'package:road_project_flutter/features/mealscreen/presentation/screen/meal_detail_screen.dart';
 import 'package:road_project_flutter/features/onboarding/presentation/screen/onboarding_first.dart';
 import 'package:road_project_flutter/features/onboarding/presentation/screen/onboarding_second.dart';
 import 'package:road_project_flutter/features/onboarding/presentation/screen/onboarding_three.dart';
 import 'package:road_project_flutter/features/profile/presentaion/screen/edit_profile_screen.dart';
 import 'package:road_project_flutter/features/profile/presentaion/screen/network_screen.dart';
 import 'package:road_project_flutter/features/splash/splash_screen.dart';
+import 'package:road_project_flutter/features/store/presentation/screen/shipping_information_screen.dart';
+import 'package:road_project_flutter/features/store/presentation/screen/store_show.dart';
 class AppRoutes {
   static const String test = "/test_screen.dart";
   static const String splash = "/splsah";
@@ -41,6 +46,11 @@ class AppRoutes {
   static const String planDetails="/planDetails";
   static const String myProgressScreen="/myProgressScreen";
   static const String calenderScreen="/calenderScreen";
+  static const String detailFoodScreen="/detailFoodScreen";
+  static const String mealDetailScreen="/mealDetailScreen";
+  static const String personalDetailsScreen="/personalDetailsScreen";
+  static const String productDetails="/productDetails";
+  static const String shippingInformationScreen="/shippingInformationScreen";
 
 
   static List<GetPage> routes = [
@@ -65,5 +75,10 @@ class AppRoutes {
     GetPage(name: planDetails, page: () => PlanDetailScreen()),
     GetPage(name: myProgressScreen, page: () => MyProgressScreen()),
     GetPage(name: calenderScreen, page: () => CalendarScreen()),
+    GetPage(name: detailFoodScreen, page: () => BreakfastScreen()),
+    GetPage(name: mealDetailScreen, page: () => MealDetailScreen()),
+    GetPage(name: personalDetailsScreen, page: () => PersonalDetailScreen()),
+    GetPage(name: productDetails, page: () => ProductDetailScreen()),
+    GetPage(name: shippingInformationScreen, page: () => ShippingInformationScreen()),
   ];
 }

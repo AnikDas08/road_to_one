@@ -6,8 +6,9 @@ import 'package:road_project_flutter/component/text/common_text.dart';
 import 'package:road_project_flutter/utils/constants/app_colors.dart';
 
 import '../../../../component/image/app_bar.dart';
+import '../../../../config/route/app_routes.dart';
 import '../controller/cart_controller.dart';
-import '../models/cart_item.dart';
+import '../../data/models/cart_item.dart';
 
 class CartScreen extends StatelessWidget {
   CartScreen({Key? key}) : super(key: key);
@@ -87,6 +88,9 @@ class CartScreen extends StatelessWidget {
                 SizedBox(height: 20.h,),
                 CommonButton(
                   titleText: "Checkout",
+                  onTap: (){
+                    Get.toNamed(AppRoutes.shippingInformationScreen);
+                  },
                 ),
                 SizedBox(height: 20.h,),
               ],

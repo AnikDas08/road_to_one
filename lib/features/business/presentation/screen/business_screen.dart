@@ -18,21 +18,7 @@ class BusinessScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroudColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(80.h), // 👈 AppBar height increased
-        child: AppBar(
-          backgroundColor: AppColors.upcolor,
-          centerTitle: true,
-          title: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 20.h),
-            child: CommonText(
-              text: "Personal Business & Mindset Development Plan",
-              fontSize: 24.sp,
-              fontWeight: FontWeight.w600,
-              maxLines: 2,
-              color: Colors.white,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
+        child: AppBarNew(title: "Personal Business & Mindset Development Plan",showBackButton: false,),
       ),
 
       body: Obx(() => ListView.builder(

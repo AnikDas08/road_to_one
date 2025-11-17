@@ -135,23 +135,36 @@ class CalendarController extends GetxController {
             itemCount: 10,
             itemBuilder: (context, index) {
               final year = DateTime.now().year - 5 + index;
-              return ListTile(
-                title: Text(
-                  year.toString(),
-                  style: const TextStyle(color: Colors.white),
+
+              return GetBuilder<CalendarController>(
+                builder: (_) => Container(
+                  color: (year == selectedYear)
+                      ? Colors.white24   // highlight selected year
+                      : Colors.transparent,
+                  child: ListTile(
+                    title: Text(
+                      year.toString(),
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    onTap: () async {
+                      selectedYear = year;
+                      update();
+                      Navigator.pop(Get.context!);
+
+                      await Future.delayed(Duration(milliseconds: 120));
+                    },
+                  ),
                 ),
-                onTap: () {
-                  selectedYear = year;
-                  update();
-                  Get.back();
-                },
               );
             },
           ),
         ),
       ),
+      barrierDismissible: true,
     );
   }
+
+
 
   void showMonthPicker() {
     const months = [
@@ -177,7 +190,7 @@ class CalendarController extends GetxController {
                 onTap: () {
                   selectedMonth = months[index];
                   update();
-                  Get.back();
+                  Navigator.pop(Get.context!);
                 },
               );
             },

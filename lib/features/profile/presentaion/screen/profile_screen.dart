@@ -54,7 +54,9 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
         actions: [
           IconButton(
             icon: const Icon(Icons.settings,size: 30,color: AppColors.white200,),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AppRoutes.settingScreen);
+            },
           ),
         ],
       ),

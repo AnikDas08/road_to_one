@@ -11,6 +11,14 @@ import 'package:road_project_flutter/features/gym_screen/presentaion/screens/cal
 import 'package:road_project_flutter/features/gym_screen/presentaion/screens/my_plan_screen.dart';
 import 'package:road_project_flutter/features/gym_screen/presentaion/screens/myprogress_screen.dart';
 import 'package:road_project_flutter/features/gym_screen/presentaion/screens/plan_details_screen.dart';
+import 'package:road_project_flutter/features/home/presentation/screen/notification_screen.dart';
+import 'package:road_project_flutter/features/profile/presentaion/screen/about_use_screen.dart';
+import 'package:road_project_flutter/features/profile/presentaion/screen/change_password_screen.dart';
+import 'package:road_project_flutter/features/profile/presentaion/screen/delete_screen.dart';
+import 'package:road_project_flutter/features/profile/presentaion/screen/order_history_screen.dart';
+import 'package:road_project_flutter/features/profile/presentaion/screen/setting_screen.dart';
+import 'package:road_project_flutter/features/messages/presentation/screen/chat_screen.dart';
+import 'package:road_project_flutter/features/profile/presentaion/screen/shipping_information_update.dart';
 import 'package:road_project_flutter/features/store/presentation/screen/cart_screen.dart';
 import 'package:road_project_flutter/features/home/presentation/screen/create_post_screen.dart';
 import 'package:road_project_flutter/features/home/presentation/screen/home_nav_screen.dart';
@@ -22,8 +30,10 @@ import 'package:road_project_flutter/features/onboarding/presentation/screen/onb
 import 'package:road_project_flutter/features/profile/presentaion/screen/edit_profile_screen.dart';
 import 'package:road_project_flutter/features/profile/presentaion/screen/network_screen.dart';
 import 'package:road_project_flutter/features/splash/splash_screen.dart';
+import 'package:road_project_flutter/features/store/presentation/screen/pay_screen.dart';
 import 'package:road_project_flutter/features/store/presentation/screen/shipping_information_screen.dart';
 import 'package:road_project_flutter/features/store/presentation/screen/store_show.dart';
+import 'package:road_project_flutter/features/store/presentation/screen/success_payment_screen.dart';
 class AppRoutes {
   static const String test = "/test_screen.dart";
   static const String splash = "/splsah";
@@ -33,7 +43,7 @@ class AppRoutes {
   static const String forgetPasswordScreen = "/forgetPasswordScreen";
   static const String verifyUser="/verifyUser";
   static const String verifyAccount="/verifyAccount";
-  static const String changePassword="/changePassword";
+  static const String setPasswordScreen="/setPasswordScreen";
   static const String onBoardingFirst="/onBoardingFirst";
   static const String onBoardingSecond="/onBoardingSecond";
   static const String onBoardingThree="/onBoardingThree";
@@ -51,6 +61,16 @@ class AppRoutes {
   static const String personalDetailsScreen="/personalDetailsScreen";
   static const String productDetails="/productDetails";
   static const String shippingInformationScreen="/shippingInformationScreen";
+  static const String payScreen="/payScreen";
+  static const String successImageScreen="/successImageScreen";
+  static const String chatScreenImage="/chatScreenImage";
+  static const String settingScreen="/settingScreen";
+  static const String orderHistoryScreen="/orderHistoryScreen";
+  static const String shippingInformationUpdateScreen="/shippingInformationUpdateScreen";
+  static const String changePassword="/changePassword";
+  static const String aboutUsScreen="/aboutUsScreen";
+  static const String deleteScreen="/deleteScreen";
+  static const String notificationScreen="/notificationScreen";
 
 
   static List<GetPage> routes = [
@@ -62,7 +82,7 @@ class AppRoutes {
     GetPage(name: verifyUser, page: () => const VerifyUserScreen()),
     GetPage(name: verifyUser, page: () => const VerifyUserScreen()),
     GetPage(name: verifyAccount, page: () => const VerifyScreen()),
-    GetPage(name: changePassword, page: () => ChangePasswordScreen()),
+    GetPage(name: setPasswordScreen, page: () => SetPasswordScreen()),
     GetPage(name: onBoardingFirst, page: () => OnboardingFirst()),
     GetPage(name: onBoardingSecond, page: () => OnboardingSecondScreen()),
     GetPage(name: onBoardingThree, page: () => OnboardingThreeScreen()),
@@ -80,5 +100,15 @@ class AppRoutes {
     GetPage(name: personalDetailsScreen, page: () => PersonalDetailScreen()),
     GetPage(name: productDetails, page: () => ProductDetailScreen()),
     GetPage(name: shippingInformationScreen, page: () => ShippingInformationScreen()),
+    GetPage(name: payScreen, page: () => PaymentScreen()),
+    GetPage(name: successImageScreen, page: () => SuccessPaymentScreen()),
+    GetPage(name: chatScreenImage, page: () => ChatScreen()),
+    GetPage(name: settingScreen, page: () => SettingsScreen()),
+    GetPage(name: orderHistoryScreen, page: () => OrderHistoryScreen()),
+    GetPage(name: shippingInformationUpdateScreen, page: () => ShippingInformationUpdateScreen()),
+    GetPage(name: changePassword, page: () => ChangePasswordScreen()),
+    GetPage(name: aboutUsScreen, page: () => AboutUsScreen()),
+    GetPage(name: deleteScreen, page: () => DeleteScreen()),
+    GetPage(name: notificationScreen, page: () => NotificationScreen()),
   ];
 }

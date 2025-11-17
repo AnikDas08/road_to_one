@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../constants/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -13,7 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color iconColors;
   final double height;
   final TextStyle? textStyle;
-  final VoidCallback? onBackTap; // 👈 Added custom back button handler
+  final VoidCallback? onBackTap;
 
   const CustomAppBar({
     super.key,
@@ -25,59 +25,79 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.textStyle,
     this.iconColors = Colors.black,
     this.showMessage = true,
-    this.onBackTap, // 👈 optional custom action
+    this.onBackTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: backgroundColor,
-      height: height,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // Centered title
-          if (showMessage)
-            Center(
-              child: Text(
-                title?.tr ?? '',
-                style: textStyle ??
-                    GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        fontSize: 18,
-                        color: AppColors.black,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-              ),
-            ),
+    final double statusBarHeight = MediaQuery.of(context).padding.top;
 
-          // Back button
-          if (showBackButton)
-            Positioned(
-              left: 0,
-              child: GestureDetector(
-                onTap: onBackTap ?? () => Get.back(), // 👈 Default is Get.back()
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8),
-                  padding: const EdgeInsets.all(5),
-                  decoration: const BoxDecoration(
-                    color: AppColors.backgroudColor,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 2,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+
+        // 🔥 Status bar white + dark icons
+        AnnotatedRegion<SystemUiOverlayStyle>(
+          value: const SystemUiOverlayStyle(
+            statusBarColor: Colors.white,
+            statusBarIconBrightness: Brightness.dark,
+            statusBarBrightness: Brightness.light,
+          ),
+          child: Container(
+            height: statusBarHeight,
+            color: Colors.white, // <-- must be white
+          ),
+        ),
+
+        // 🔥 Actual AppBar
+        Container(
+          color: backgroundColor,
+          height: height,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              if (showMessage)
+                Center(
+                  child: Text(
+                    title?.tr ?? '',
+                    style: textStyle ??
+                        GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            fontSize: 18,
+                            color: AppColors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                   ),
-                  child: Icon(Icons.arrow_back, color: Colors.white, size: 24),
                 ),
-              ),
-            ),
-        ],
-      ),
+
+              if (showBackButton)
+                Positioned(
+                  left: 0,
+                  child: GestureDetector(
+                    onTap: onBackTap ?? () => Get.back(),
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.all(5),
+                      decoration: const BoxDecoration(
+                        color: AppColors.backgroudColor,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 2,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: const Icon(Icons.arrow_back, color: Colors.white, size: 24),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 

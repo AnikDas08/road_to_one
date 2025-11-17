@@ -14,7 +14,7 @@ class VerifyController extends GetxController {
 
   void verifyOTP() {
     if (otpCode.value.length == 6) {
-      Get.toNamed(AppRoutes.changePassword);
+      Get.toNamed(AppRoutes.setPasswordScreen);
     } else {
       Get.snackbar(
         'Error',

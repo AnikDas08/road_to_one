@@ -80,12 +80,16 @@ class HomeScreen extends StatelessWidget {
               )),
               SizedBox(width: 20.w),
               Obx(() => GestureDetector(
-                onTap: controller.onNotificationTap,
+                onTap: (){
+                  Get.toNamed(AppRoutes.notificationScreen);
+                },
                 child: _buildIconWithBadge(Icons.notifications_outlined, controller.notificationCount.value, Colors.red, AppColors.white),
               )),
               SizedBox(width: 20.w),
               Obx(() => GestureDetector(
-                onTap: controller.onMessageTap,
+                onTap: (){
+                  Get.toNamed(AppRoutes.chatScreenImage);
+                },
                 child: _buildIconWithBadge(Icons.chat, controller.messageCount.value, AppColors.textColor, AppColors.white),
               )),
             ],

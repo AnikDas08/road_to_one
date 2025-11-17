@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:road_project_flutter/component/button/common_button.dart';
 import 'package:road_project_flutter/component/text/common_text.dart';
+import 'package:road_project_flutter/config/route/app_routes.dart';
 import 'package:road_project_flutter/utils/app_bar/custom_appbars.dart';
 import 'package:road_project_flutter/utils/constants/app_colors.dart';
 
@@ -110,7 +111,7 @@ class CreatePostScreen extends StatelessWidget {
             CommonButton(
                 titleText: "Create Post",
               onTap: (){
-
+                  Get.toNamed(AppRoutes.homeNav);
               },
             ),
             SizedBox(height: 20.h,),

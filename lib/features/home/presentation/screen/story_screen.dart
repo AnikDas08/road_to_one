@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:road_project_flutter/component/image/app_bar.dart';
 import 'package:road_project_flutter/utils/constants/app_colors.dart';
 
 import '../controller/create_stroy_controllers.dart';
@@ -16,11 +17,10 @@ class CreateStoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBarNew(title: "Create Story"),
       body: SafeArea(
         child: Column(
           children: [
-            // Custom AppBar
-            _buildAppBar(),
 
             // Image Preview Area
             Expanded(

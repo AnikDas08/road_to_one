@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:road_project_flutter/component/text/common_text.dart';
 import 'package:road_project_flutter/utils/constants/app_colors.dart';
 
+import '../../../../component/image/app_bar.dart';
 import '../controller/details_all_controller.dart';
 
 class BreakfastScreen extends StatelessWidget {
@@ -15,21 +16,7 @@ class BreakfastScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroudColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.upcolor,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-          onPressed: () => Get.back(),
-        ),
-        title: CommonText(
-            text: controller.mealType,
-          fontSize: 24.sp,
-          fontWeight: FontWeight.w500,
-          color: Colors.white,
-        ),
-        centerTitle: true,
-      ),
+      appBar: AppBarNew(title: controller.mealType),
       body: Obx(() => GridView.builder(
         padding: EdgeInsets.all(16.w),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

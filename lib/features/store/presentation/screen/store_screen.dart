@@ -25,7 +25,7 @@ class StoreScreen extends StatelessWidget {
           'Store',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 18.sp,
+            fontSize: 24.sp,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -33,15 +33,15 @@ class StoreScreen extends StatelessWidget {
           Stack(
             children: [
               IconButton(
-                icon: Icon(Icons.shopping_cart_outlined, color: Colors.white, size: 26),
+                icon: Icon(Icons.shopping_cart_outlined, color: Colors.white, size: 30.h),
                 onPressed: () {
-                  //controller.openCart();
+                  Get.toNamed(AppRoutes.cartScreen);
                 },
               ),
               Obx(() => controller.cartItems.length > 0
                   ? Positioned(
                 right: 8.w,
-                top: 8.h,
+                top: 4.h,
                 child: Container(
                   padding: EdgeInsets.all(4.w),
                   decoration: BoxDecoration(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:road_project_flutter/component/image/app_bar.dart';
 import 'package:road_project_flutter/utils/constants/app_colors.dart';
 
 class MealDetailScreen extends StatelessWidget {
@@ -9,24 +10,7 @@ class MealDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 20),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Oats',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: AppColors.white50,
-            fontSize: 24.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        centerTitle: false,
-      ),
+      appBar: AppBarNew(title: "Oats"),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(24),
         child: Column(

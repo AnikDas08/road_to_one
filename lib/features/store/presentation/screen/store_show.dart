@@ -306,14 +306,14 @@ class ProductDetailScreen extends StatelessWidget {
                                   titleColor: AppColors.white,
                                   borderColor: AppColors.white,
                                   onTap: (){
-                                    Get.toNamed(AppRoutes.homeNav);
+                                    Get.toNamed(AppRoutes.cartScreen);
                                   },
                                 ),
                                 SizedBox(height: 18.h),
                                 CommonButton(
                                   titleText: "Buy with Shop",
                                   onTap: (){
-                                    Get.toNamed(AppRoutes.cartScreen);
+                                    Get.toNamed(AppRoutes.homeNav);
                                   },
                                 ),
                               ],

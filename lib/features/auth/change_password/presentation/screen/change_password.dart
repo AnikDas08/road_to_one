@@ -10,11 +10,11 @@ import '../../../../../component/text/common_text.dart';
 import '../../../../../utils/constants/app_colors.dart';
 import '../controller/change_password_controller_here.dart';
 
-class ChangePasswordScreen extends StatelessWidget {
-  ChangePasswordScreen({super.key});
+class SetPasswordScreen extends StatelessWidget {
+  SetPasswordScreen({super.key});
 
-  final ChangePasswordController controller =
-  Get.put(ChangePasswordController());
+  final SetPasswordController controller =
+  Get.put(SetPasswordController());
 
   @override
   Widget build(BuildContext context) {

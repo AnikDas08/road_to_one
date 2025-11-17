@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:road_project_flutter/component/image/app_bar.dart';
 import 'package:road_project_flutter/utils/constants/app_colors.dart';
 import 'dart:io';
 import '../controller/my_progress_controller.dart';
@@ -32,23 +33,7 @@ class MyProgressScreen extends GetView<MyProgressController> {
   }
 
   PreferredSizeWidget _buildAppBar() {
-    return AppBar(
-      backgroundColor: AppColors.backgroudColor,
-      elevation: 0,
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.white),
-        onPressed: () => Get.back(),
-      ),
-      title: Text(
-        'My Progress',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-      centerTitle: true,
-    );
+    return AppBarNew(title: "My Progress");
   }
 
   Widget _buildTimeFilterTabs() {

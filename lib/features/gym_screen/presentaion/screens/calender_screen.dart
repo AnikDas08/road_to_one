@@ -67,6 +67,7 @@ class CalendarScreen extends StatelessWidget {
       child: Row(
         children: [
           _buildDropdownButton(controller.selectedYear.toString(), () {
+            Get.back();
             controller.showYearPicker();
           }),
           SizedBox(width: 8.w),

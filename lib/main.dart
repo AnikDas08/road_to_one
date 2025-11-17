@@ -14,17 +14,13 @@ Future<void> main() async {
 
   /// 🔹 Make top (status bar) white text globally
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light, // icon white
-      statusBarBrightness: Brightness.dark,
-      // iOS support
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,              // top status bar background
+      statusBarIconBrightness: Brightness.dark,  // top icons black
+      systemNavigationBarColor: Colors.black,           // 🔥 BOTTOM navbar black
+      systemNavigationBarIconBrightness: Brightness.light, // icons white
     ),
   );
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
 
   await init();
 

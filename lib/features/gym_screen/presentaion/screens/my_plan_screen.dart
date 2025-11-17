@@ -16,7 +16,7 @@ class MyPlanScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroudColor,
-      appBar: AppBarNew(title: "My Plan",showBackButton: false,),
+      appBar: AppBarNew(title: "My Plan"),
       body: Obx(() => ListView.builder(
         padding: EdgeInsets.only(top: 20,bottom: 10),
         itemCount: controller.plans.length,

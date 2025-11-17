@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ChangePasswordController extends GetxController {
+class SetPasswordController extends GetxController {
   /// Text Editing Controllers
   final passwordController = TextEditingController();
   final confirmController = TextEditingController();

@@ -29,40 +29,142 @@ class MessageScreen extends StatelessWidget {
       ),
     );
 
-    return Scaffold(
-      backgroundColor: AppColors.upcolor,
-      appBar: AppBar(
+    return SafeArea(
+      child: Scaffold(
         backgroundColor: AppColors.upcolor,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 20.sp),
-          onPressed: () => Get.back(),
-        ),
-        title: Row(
-          children: [
-            CircleAvatar(
-              radius: 20.r,
-              backgroundColor: Colors.grey[800],
-              backgroundImage: NetworkImage(chatAvatar),
+        appBar: AppBar(
+          backgroundColor: AppColors.upcolor,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 20.sp),
+            onPressed: () => Navigator.pop(context),
+          ),
+          title: Row(
+            children: [
+              CircleAvatar(
+                radius: 20.r,
+                backgroundColor: Colors.grey[800],
+                backgroundImage: NetworkImage(chatAvatar),
+              ),
+              SizedBox(width: 12.w),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      chatName,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      isOnline ? 'Online' : 'Offline',
+                      style: TextStyle(
+                        color: isOnline ? AppColors.primaryColor : Colors.grey,
+                        fontSize: 12.sp,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.more_vert, color: Colors.white),
+              onPressed: () {},
             ),
-            SizedBox(width: 12.w),
+          ],
+        ),
+        body: Column(
+          children: [
+            // Messages List
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Obx(() => ListView.builder(
+                reverse: true,
+                padding: EdgeInsets.all(16.w),
+                itemCount: controller.messages.length,
+                itemBuilder: (context, index) {
+                  final message = controller.messages[index];
+                  return _buildMessageBubble(message, chatAvatar);
+                },
+              )),
+            ),
+      
+            // Message Input
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+              decoration: BoxDecoration(
+                color: AppColors.upcolor,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 10,
+                    offset: Offset(0, -5),
+                  ),
+                ],
+              ),
+              child: Row(
                 children: [
-                  Text(
-                    chatName,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
+                  // Attachment Button
+                  GestureDetector(
+                    onTap: controller.showImageOptions,
+                    child: Container(
+                      width: 40.w,
+                      height: 40.h,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF2A2A2A),
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: Icon(
+                        Icons.attach_file,
+                        color: Colors.white70,
+                        size: 20.sp,
+                      ),
                     ),
                   ),
-                  Text(
-                    isOnline ? 'Online' : 'Offline',
-                    style: TextStyle(
-                      color: isOnline ? AppColors.primaryColor : Colors.grey,
-                      fontSize: 12.sp,
+                  SizedBox(width: 12.w),
+      
+                  // Text Input
+                  Expanded(
+                    child: TextField(
+                      controller: controller.messageController,
+                      style: TextStyle(color: Colors.white, fontSize: 14.sp),
+                      decoration: InputDecoration(
+                        hintText: 'Type a message',
+                        hintStyle: TextStyle(color: Colors.grey[600], fontSize: 14.sp),
+                        filled: true,
+                        fillColor: Color(0xFF2A2A2A),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.r),
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                      ),
+                      maxLines: null,
+                      textInputAction: TextInputAction.send,
+                      onSubmitted: (_) => controller.sendMessage(),
+                    ),
+                  ),
+                  SizedBox(width: 12.w),
+      
+                  // Send Button
+                  GestureDetector(
+                    onTap: controller.sendMessage,
+                    child: Container(
+                      width: 48.w,
+                      height: 48.h,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.send,
+                        color: Colors.black,
+                        size: 20.sp,
+                      ),
                     ),
                   ),
                 ],
@@ -70,106 +172,6 @@ class MessageScreen extends StatelessWidget {
             ),
           ],
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.more_vert, color: Colors.white),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          // Messages List
-          Expanded(
-            child: Obx(() => ListView.builder(
-              reverse: true,
-              padding: EdgeInsets.all(16.w),
-              itemCount: controller.messages.length,
-              itemBuilder: (context, index) {
-                final message = controller.messages[index];
-                return _buildMessageBubble(message, chatAvatar);
-              },
-            )),
-          ),
-
-          // Message Input
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-            decoration: BoxDecoration(
-              color: AppColors.upcolor,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 10,
-                  offset: Offset(0, -5),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                // Attachment Button
-                GestureDetector(
-                  onTap: controller.showImageOptions,
-                  child: Container(
-                    width: 40.w,
-                    height: 40.h,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF2A2A2A),
-                      borderRadius: BorderRadius.circular(20.r),
-                    ),
-                    child: Icon(
-                      Icons.attach_file,
-                      color: Colors.white70,
-                      size: 20.sp,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 12.w),
-
-                // Text Input
-                Expanded(
-                  child: TextField(
-                    controller: controller.messageController,
-                    style: TextStyle(color: Colors.white, fontSize: 14.sp),
-                    decoration: InputDecoration(
-                      hintText: 'Type a message',
-                      hintStyle: TextStyle(color: Colors.grey[600], fontSize: 14.sp),
-                      filled: true,
-                      fillColor: Color(0xFF2A2A2A),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.r),
-                        borderSide: BorderSide.none,
-                      ),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-                    ),
-                    maxLines: null,
-                    textInputAction: TextInputAction.send,
-                    onSubmitted: (_) => controller.sendMessage(),
-                  ),
-                ),
-                SizedBox(width: 12.w),
-
-                // Send Button
-                GestureDetector(
-                  onTap: controller.sendMessage,
-                  child: Container(
-                    width: 48.w,
-                    height: 48.h,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Icons.send,
-                      color: Colors.black,
-                      size: 20.sp,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

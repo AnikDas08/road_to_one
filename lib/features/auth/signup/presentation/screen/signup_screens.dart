@@ -68,8 +68,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const CommonText(
                 text: "Sign up and elevate your fitness journey with us",
                 fontSize: 14,
-                color: AppColors.white400,
+                color: AppColors.white700,
                 fontWeight: FontWeight.w400,
+                textAlign: TextAlign.start,
+                maxLines: 2,
               ),
 
               SizedBox(height: 32.h),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:road_project_flutter/component/image/app_bar.dart';
 import 'package:road_project_flutter/utils/constants/app_colors.dart';
 
 import '../../../home/presentation/screen/showstory_screen.dart';
@@ -19,23 +20,7 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroudColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.upcolor,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 20.sp),
-          onPressed: () => Get.back(),
-        ),
-        title: Text(
-          'Chat',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        centerTitle: true,
-      ),
+      appBar: AppBarNew(title: "Chat"),
       body: Column(
         children: [
           // Search Bar

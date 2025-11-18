@@ -349,6 +349,7 @@ class _MediaViewerScreenState extends State<MediaViewerScreen> {
       ),
       body: PageView.builder(
         controller: _pageController,
+        scrollDirection: Axis.vertical, // THIS IS THE KEY CHANGE - Makes it scroll vertically
         itemCount: widget.items.length,
         onPageChanged: (index) {
           setState(() {
